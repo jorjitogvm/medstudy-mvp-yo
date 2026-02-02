@@ -12,13 +12,22 @@
       <a href="./app.html">App</a>
     </nav>
 
-    <h1>App</h1>
+    <h1>Subjects</h1>
 
     <div class="card">
-      <p>This page will show Subjects → Topics from Supabase.</p>
-      <p><small>Open DevTools Console to confirm JS is loading.</small></p>
+      <label>
+        Language:
+        <select id="langSelect">
+          <option value="en" selected>English</option>
+          <option value="ro">Romanian</option>
+        </select>
+      </label>
+      <p><small>This is UI language (content translation can be added later per topic).</small></p>
     </div>
 
-    <script src="./app.js"></script>
+    <div id="status" class="card">Loading…</div>
+    <div id="subjects" class="row"></div>
+
+    <script type="module" src="./app.js"></script>
   </body>
 </html>

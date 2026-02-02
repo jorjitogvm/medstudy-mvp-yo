@@ -1,4 +1,4 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2?bundle";
 
 // Your Supabase project details
 const SUPABASE_URL = "https://kcsvbisdjzhnoupxkvwx.supabase.co";
@@ -11,6 +11,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const statusEl = document.getElementById("status");
 const subjectsEl = document.getElementById("subjects");
 const langSelect = document.getElementById("langSelect");
+
+if (statusEl) statusEl.textContent = "JS loaded. Connecting to Supabase…";
 
 let currentLang = "en";
 langSelect?.addEventListener("change", async (e) => {
@@ -37,8 +39,8 @@ async function loadSubjects() {
     .order("name_en", { ascending: true });
 
   if (error) {
-    statusEl.textContent = "Error loading subjects (see console).";
-    console.error(error);
+    statusEl.textContent = "Error loading subjects (open Console).";
+    console.error("Supabase error:", error);
     return;
   }
 
@@ -56,7 +58,7 @@ async function loadSubjects() {
     `;
 
     div.querySelector("button").addEventListener("click", () => {
-      alert(`Next step: show topics for subject ${s.code}. (We’ll build this next.)`);
+      alert(`Next step: show topics for subject ${s.code}.`);
     });
 
     subjectsEl.appendChild(div);

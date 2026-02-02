@@ -58,8 +58,8 @@ async function loadSubjects() {
     `;
 
     div.querySelector("button").addEventListener("click", () => {
-      alert(`Next step: show topics for subject ${s.code}.`);
-    });
+  location.href = `./topics.html?subjectId=${encodeURIComponent(s.id)}&subjectCode=${encodeURIComponent(s.code)}`;
+ });
 
     subjectsEl.appendChild(div);
   }

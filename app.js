@@ -12,9 +12,8 @@ const statusEl = document.getElementById("status");
 const subjectsEl = document.getElementById("subjects");
 const langSelect = document.getElementById("langSelect");
 
-if (statusEl) statusEl.textContent = "JS loaded. Connecting to Supabase…";
-
 let currentLang = "en";
+
 langSelect?.addEventListener("change", async (e) => {
   currentLang = e.target.value;
   await loadSubjects();
@@ -30,6 +29,8 @@ function escapeHtml(s) {
 }
 
 async function loadSubjects() {
+  if (!statusEl || !subjectsEl) return;
+
   statusEl.textContent = "Loading subjects from Supabase…";
   subjectsEl.innerHTML = "";
 
@@ -54,12 +55,15 @@ async function loadSubjects() {
     div.innerHTML = `
       <h3>${escapeHtml(name)}</h3>
       <p><small>Code: ${escapeHtml(s.code)}</small></p>
-      <button data-subject-id="${escapeHtml(s.id)}">Open</button>
+      <button type="button">Open</button>
     `;
 
     div.querySelector("button").addEventListener("click", () => {
-  location.href = `./topics.html?subjectId=${encodeURIComponent(s.id)}&subjectCode=${encodeURIComponent(s.code)}`;
- });
+      // Navigate to topics page for this subject
+      location.href = `./topics.html?subjectId=${encodeURIComponent(
+        s.id
+      )}&subjectCode=${encodeURIComponent(s.code)}`;
+    });
 
     subjectsEl.appendChild(div);
   }

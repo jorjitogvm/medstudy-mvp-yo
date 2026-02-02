@@ -2,6 +2,5 @@ body { font-family: system-ui, Arial, sans-serif; margin: 24px; max-width: 900px
 nav a { margin-right: 12px; }
 .card { border: 1px solid #ddd; border-radius: 10px; padding: 12px; margin: 12px 0; }
 .row { display: flex; gap: 12px; flex-wrap: wrap; }
-button { padding: 8px 12px; cursor: pointer; }
-input, select { padding: 8px; }
+.subject { border: 1px solid #ddd; border-radius: 10px; padding: 12px; width: 260px; }
 small { color: #666; }
